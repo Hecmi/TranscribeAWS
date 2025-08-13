@@ -13,7 +13,7 @@ col1, col2 = st.columns(2)
 # --- Columna 1: Subir audio para transcripción ---
 with col1:
     st.header("🎤 Subir Audio (MP3)")
-    audio_file = st.file_uploader("Sube un archivo .mp3", type=["mp3"], key="audio")
+    audio_file = st.file_uploader("Sube un archivo .mp3", type=["mp3", "m4a", "aac"], key="audio")
 
     if audio_file and st.button("Transcribir Audio"):
         audio_bytes = audio_file.read()
@@ -33,8 +33,6 @@ with col1:
             else:
                 st.error(f"❌ Error: {response.json().get('error', 'Desconocido')}")
 
-# --- Columna 2: Ingresar texto para generar audio ---
-# --- Columna 2: Ingresar texto para generar audio ---
 with col2:
     st.header("✍️ Ingresar Texto")
     input_text = st.text_area("Escribe el texto que deseas convertir a audio", height=200)
